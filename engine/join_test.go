@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"testing"
 
-	"github.com/proullon/ramsql/engine/log"
+	"github.com/yonasadiel/ramsql/engine/log"
 
-	_ "github.com/proullon/ramsql/driver"
+	_ "github.com/yonasadiel/ramsql/driver"
 )
 
 func TestJoinOrderBy(t *testing.T) {
@@ -36,8 +36,8 @@ func TestJoinOrderBy(t *testing.T) {
 		}
 	}
 
-	query := `SELECT user.name, address.value 
-			FROM user 
+	query := `SELECT user.name, address.value
+			FROM user
 			JOIN address ON address.user_id = user.id
 			WHERE user.id = $1
 			ORDER BY address.value ASC`

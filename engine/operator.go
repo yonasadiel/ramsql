@@ -2,10 +2,11 @@ package engine
 
 import (
 	"fmt"
-	"github.com/proullon/ramsql/engine/log"
-	"github.com/proullon/ramsql/engine/parser"
 	"strconv"
 	"time"
+
+	"github.com/yonasadiel/ramsql/engine/log"
+	"github.com/yonasadiel/ramsql/engine/parser"
 )
 
 // Operator compares 2 values and return a boolean
@@ -36,7 +37,7 @@ func convToDate(t interface{}) (time.Time, error) {
 		log.Debug("convToDate> unexpected type %T\n", t)
 		return time.Time{}, fmt.Errorf("unexpected internal type %T", t)
 	case string:
-		d, err :=parser.ParseDate(string(t))
+		d, err := parser.ParseDate(string(t))
 		if err != nil {
 			return time.Time{}, fmt.Errorf("cannot parse date %v", t)
 		}

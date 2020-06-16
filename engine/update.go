@@ -5,9 +5,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/proullon/ramsql/engine/log"
-	"github.com/proullon/ramsql/engine/parser"
-	"github.com/proullon/ramsql/engine/protocol"
+	"github.com/yonasadiel/ramsql/engine/log"
+	"github.com/yonasadiel/ramsql/engine/parser"
+	"github.com/yonasadiel/ramsql/engine/protocol"
 )
 
 /*

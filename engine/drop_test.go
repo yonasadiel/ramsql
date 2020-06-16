@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"testing"
 
-	"github.com/proullon/ramsql/engine/log"
+	"github.com/yonasadiel/ramsql/engine/log"
 
-	_ "github.com/proullon/ramsql/driver"
+	_ "github.com/yonasadiel/ramsql/driver"
 )
 
 func TestDrop(t *testing.T) {

@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/proullon/ramsql/engine/log"
+	"github.com/yonasadiel/ramsql/engine/log"
 )
 
 func TestCreateTable(t *testing.T) {
@@ -210,8 +210,8 @@ func TestCreateTableWithTimestamp(t *testing.T) {
 }
 
 func LoadUserAddresses(db *sql.DB, userID int64) ([]string, error) {
-	query := `SELECT address.street_number, address.street FROM address 
-							JOIN user_addresses ON address.id=user_addresses.address_id 
+	query := `SELECT address.street_number, address.street FROM address
+							JOIN user_addresses ON address.id=user_addresses.address_id
 							WHERE user_addresses.user_id = $1;`
 
 	rows, err := db.Query(query, userID)
@@ -305,7 +305,7 @@ func TestCompareDateGT(t *testing.T) {
 
 	query := "SELECT dat FROM comp WHERE dat > '2018-03-03'"
 
-	rows, err := db.Query(query, )
+	rows, err := db.Query(query)
 	if err != nil {
 		t.Fatalf("sql.Query: %s", err)
 	}
@@ -362,7 +362,7 @@ func TestCompareDateLT(t *testing.T) {
 
 	query := "SELECT dat FROM comp WHERE dat < '2019-03-03'"
 
-	rows, err := db.Query(query, )
+	rows, err := db.Query(query)
 	if err != nil {
 		t.Fatalf("sql.Query: %s", err)
 	}

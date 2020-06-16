@@ -6,7 +6,7 @@ package parser
 import (
 	"fmt"
 
-	"github.com/proullon/ramsql/engine/log"
+	"github.com/yonasadiel/ramsql/engine/log"
 )
 
 // The parser structure holds the parser's internal state.
@@ -510,7 +510,7 @@ func (p *parser) parseQuotedToken() (*Decl, error) {
 	quoted := false
 	quoteToken := DoubleQuoteToken
 
-	if p.is(DoubleQuoteToken) || p.is(BacktickToken){
+	if p.is(DoubleQuoteToken) || p.is(BacktickToken) {
 		quoted = true
 		quoteToken = p.cur().Token
 		if err := p.next(); err != nil {
