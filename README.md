@@ -1,6 +1,6 @@
 # RamSQL
 
-[![Build Status](https://travis-ci.org/proullon/ramsql.svg)](https://travis-ci.org/proullon/ramsql)
+[![Build Status](https://travis-ci.org/yonasadiel/ramsql.svg)](https://travis-ci.org/yonasadiel/ramsql)
 
 ## Disposable SQL engine
 
@@ -13,20 +13,22 @@ The idea is to avoid setup, DBMS installation and credentials management as long
 A unique engine is tied to a single sql.DB with as much sql.Conn as needed providing a unique DataSourceName.
 Bottom line : One DataSourceName per test and you have full test isolation in no time.
 
+This repository is fork of [proullon/ramsql](https://github.com/proullon/ramsql). This repository add more support for mysql syntax.
+
 ## Installation
 
 ```
-  go get github.com/proullon/ramsql
+  go get github.com/yonasadiel/ramsql
 ```
 
-## Usage 
+## Usage
 
 Let's say you want to test the function LoadUserAddresses :
 
 ```go
 func LoadUserAddresses(db *sql.DB, userID int64) ([]string, error) {
-	query := `SELECT address.street_number, address.street FROM address 
-							JOIN user_addresses ON address.id=user_addresses.address_id 
+	query := `SELECT address.street_number, address.street FROM address
+							JOIN user_addresses ON address.id=user_addresses.address_id
 							WHERE user_addresses.user_id = $1;`
 
 	rows, err := db.Query(query, userID)
@@ -51,14 +53,14 @@ func LoadUserAddresses(db *sql.DB, userID int64) ([]string, error) {
 Use RamSQL to test it in a disposable isolated in-memory SQL engine :
 
 ```go
-package myproject 
+package myproject
 
 import (
 	"database/sql"
 	"fmt"
 	"testing"
 
-	_ "github.com/proullon/ramsql/driver"
+	_ "github.com/yonasadiel/ramsql/driver"
 )
 
 
@@ -118,7 +120,7 @@ CREATE TABLE IF NOT EXISTS user_addresses (address_id INT, user_id INT);
 You may want to test its validity:
 
 ```console
-$ go install github.com/proullon/ramsql
+$ go install github.com/yonasadiel/ramsql
 $ ramsql < schema.sql
 ramsql> Query OK. 1 rows affected
 ramsql> Query OK. 1 rows affected
