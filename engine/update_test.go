@@ -19,7 +19,7 @@ func TestUpdateSimple(t *testing.T) {
 	}
 	defer db.Close()
 
-	_, err = db.Exec("CREATE TABLE account (id INT AUTOINCREMENT, email TEXT)")
+	_, err = db.Exec("CREATE TABLE account (id INT AUTO_INCREMENT, email TEXT)")
 	if err != nil {
 		t.Fatalf("sql.Exec: Error: %s\n", err)
 	}
@@ -65,7 +65,7 @@ func TestUpdateIsNull(t *testing.T) {
 	}
 	defer db.Close()
 
-	_, err = db.Exec("CREATE TABLE account (id INT AUTOINCREMENT, email TEXT, creation_date TIMESTAMP WITH TIME ZONE)")
+	_, err = db.Exec("CREATE TABLE account (id INT AUTO_INCREMENT, email TEXT, creation_date TIMESTAMP WITH TIME ZONE)")
 	if err != nil {
 		t.Fatalf("sql.Exec: Error: %s\n", err)
 	}
@@ -140,7 +140,7 @@ func TestUpdateNotNull(t *testing.T) {
 	}
 	defer db.Close()
 
-	_, err = db.Exec("CREATE TABLE account (id INT AUTOINCREMENT, email TEXT, creation_date TIMESTAMP WITH TIME ZONE)")
+	_, err = db.Exec("CREATE TABLE account (id INT AUTO_INCREMENT, email TEXT, creation_date TIMESTAMP WITH TIME ZONE)")
 	if err != nil {
 		t.Fatalf("sql.Exec: Error: %s\n", err)
 	}
